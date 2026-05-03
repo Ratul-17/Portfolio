@@ -12,6 +12,7 @@
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -30,113 +31,181 @@
     <style>
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
+        .dark ::-webkit-scrollbar-track { background: #1e293b; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .dark ::-webkit-scrollbar-thumb:hover { background: #64748b; }
         
-        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom-color: rgba(51, 65, 85, 0.5);
+        }
+        
+        /* Gradient Animation */
+        .animate-gradient {
+            background-size: 200% auto;
+            animation: textGradient 4s linear infinite;
+        }
+        @keyframes textGradient {
+            to { background-position: 200% center; }
+        }
     </style>
+    <!-- Prevent FOUC for dark mode -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
-<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-brand-500 selection:text-white overflow-x-hidden">
+<body class="font-sans text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 antialiased selection:bg-brand-500 selection:text-white overflow-x-hidden transition-colors duration-300">
 
     <!-- Navigation -->
     <nav class="fixed w-full glass-nav z-50 border-b border-slate-200 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
+            <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
-                    <span class="text-xl font-bold text-brand-900 tracking-tight">Md. Ariful Islam (Ratul)</span>
+                    <span class="text-xl font-bold text-brand-900 dark:text-brand-100 tracking-tight">Md. Ariful Islam (Ratul)</span>
                 </div>
+                
+                <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center space-x-6">
-                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">About</a>
-                    <a href="#experience" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Experience</a>
-                    <a href="#skills" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Skills</a>
-                    <a href="#dashboards" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Dashboards</a>
-                    <a href="#webapps" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Systems</a>
-                    <a href="#research" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Research</a>
+                    <a href="#about" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">About</a>
+                    <a href="#experience" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Experience</a>
+                    <a href="#dashboards" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Dashboards</a>
+                    <a href="#webapps" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Systems</a>
+                    <a href="#research" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Research</a>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" type="button" class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none rounded-lg text-sm p-2.5 transition-colors">
+                        <i id="theme-toggle-dark-icon" data-lucide="moon" class="hidden w-5 h-5"></i>
+                        <i id="theme-toggle-light-icon" data-lucide="sun" class="hidden w-5 h-5"></i>
+                    </button>
                     
                     <!-- CV Download Button -->
-                    <a href="CV_Md. Ariful Islam.pdf" download class="px-4 py-2 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-colors font-medium text-sm flex items-center gap-2 shadow-md">
+                    <a href="CV_Md. Ariful Islam.pdf" download class="px-4 py-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-700 dark:from-brand-600 dark:to-brand-500 text-white hover:shadow-lg transition-all font-medium text-sm flex items-center gap-2 transform hover:-translate-y-0.5">
                         <i data-lucide="download" class="w-4 h-4"></i> Download CV
                     </a>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center lg:hidden gap-4">
+                    <button id="theme-toggle-mobile" type="button" class="text-slate-500 dark:text-slate-400 focus:outline-none p-2">
+                        <i id="theme-toggle-dark-icon-mobile" data-lucide="moon" class="hidden w-5 h-5"></i>
+                        <i id="theme-toggle-light-icon-mobile" data-lucide="sun" class="hidden w-5 h-5"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-600 dark:text-slate-300 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Experience</a>
+                <a href="#dashboards" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Dashboards</a>
+                <a href="#webapps" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Systems</a>
+                <a href="#research" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Research</a>
+                <a href="CV_Md. Ariful Islam.pdf" download class="mt-4 w-full flex justify-center items-center gap-2 px-4 py-3 rounded-xl bg-brand-600 text-white font-medium">
+                    <i data-lucide="download" class="w-4 h-4"></i> Download CV
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="about" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
-        <div class="flex-1 space-y-6" data-aos="fade-right" data-aos-duration="1000">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f0f9ff] text-[#0ea5e9] font-medium text-sm mb-2 shadow-sm border border-blue-100">
-                <span class="w-2 h-2 rounded-full bg-[#0ea5e9] animate-pulse"></span>
+    <section id="about" class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12 min-h-screen justify-center overflow-hidden">
+        
+        <!-- Background Gradient Blobs -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+            <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-gradient-to-br from-brand-300 to-purple-300 dark:from-brand-900/40 dark:to-purple-900/40 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-pulse"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-96 h-96 bg-gradient-to-tr from-cyan-300 to-brand-400 dark:from-cyan-900/40 dark:to-brand-900/40 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="flex-1 space-y-6 w-full text-center md:text-left" data-aos="fade-right" data-aos-duration="1000">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm border border-brand-100 dark:border-slate-700 text-brand-600 dark:text-brand-400 font-medium text-xs sm:text-sm shadow-sm mx-auto md:mx-0">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
                 Management Trainee Officer (Operations) - AKIJ Resource
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
-                Driving Efficiency through <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-500">Data & Operations.</span>
+            <h1 class="text-4xl sm:text-5xl md:text-5xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                Driving Efficiency through <br class="hidden lg:block" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-cyan-500 to-brand-500 dark:from-brand-400 dark:via-cyan-300 dark:to-brand-400 animate-gradient">Data & Operations.</span>
             </h1>
-            <p class="text-lg text-slate-600 leading-relaxed max-w-2xl">
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto md:mx-0">
                 I am a Supply Chain & Operations Analyst and IPE Graduate from AUST. With expertise spanning production planning, demand forecasting, and advanced data analytics, I specialize in solving complex bottlenecks using Python, SQL, Power BI, and Lean Six Sigma across FMCG and heavy industry environments.
             </p>
             
-            <div class="flex flex-wrap gap-4 pt-4">
-                <a href="#dashboards" class="px-6 py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition-all shadow-lg shadow-brand-500/30 flex items-center gap-2">
+            <div class="flex flex-col sm:flex-row flex-wrap gap-4 pt-4 justify-center md:justify-start">
+                <a href="#dashboards" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 text-white font-bold hover:from-brand-500 hover:to-brand-400 transition-all shadow-lg shadow-brand-500/30 flex items-center justify-center gap-2 transform hover:-translate-y-1">
                     View Projects <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </a>
-                <a href="https://github.com/Ratul-17/" target="_blank" class="px-6 py-3 rounded-xl bg-[#111827] text-white font-bold hover:bg-gray-800 transition-all flex items-center gap-2 shadow-lg">
+                <a href="https://github.com/Ratul-17/" target="_blank" class="px-6 py-3.5 rounded-xl bg-[#111827] dark:bg-slate-800 text-white font-bold hover:bg-gray-800 dark:hover:bg-slate-700 transition-all shadow-lg flex items-center justify-center gap-2 transform hover:-translate-y-1">
                     <i data-lucide="github" class="w-5 h-5"></i> GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/arifulislam620/" target="_blank" class="px-6 py-3 rounded-xl bg-white text-slate-700 font-bold border-2 border-slate-200 hover:border-[#0077b5] hover:text-[#0077b5] transition-all flex items-center gap-2 shadow-sm group">
+                <a href="https://www.linkedin.com/in/arifulislam620/" target="_blank" class="px-6 py-3.5 rounded-xl bg-white dark:bg-transparent text-slate-700 dark:text-white font-bold border-2 border-slate-200 dark:border-slate-700 hover:border-[#0077b5] dark:hover:border-[#0077b5] hover:text-[#0077b5] dark:hover:text-[#0077b5] transition-all flex items-center justify-center gap-2 shadow-sm group transform hover:-translate-y-1">
                     <i data-lucide="linkedin" class="w-5 h-5 text-[#0077b5] group-hover:scale-110 transition-transform"></i> LinkedIn
                 </a>
             </div>
         </div>
         
         <!-- Profile Picture Container -->
-        <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 relative flex-shrink-0" data-aos="zoom-in" data-aos-duration="1000">
-            <div class="absolute inset-0 bg-gradient-to-tr from-brand-200 to-brand-50 rounded-full transform -rotate-6 scale-105 z-0 animate-[spin_10s_linear_infinite]"></div>
-            <img src="profile.jpg" alt="Md. Ariful Islam Ratul" onerror="this.src='/api/placeholder/400/400'" class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white shadow-2xl">
+        <div class="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 relative flex-shrink-0 mx-auto md:mx-0 mt-8 md:mt-0" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="absolute inset-0 bg-gradient-to-tr from-brand-300 to-purple-300 dark:from-brand-600/50 dark:to-purple-600/50 rounded-full transform -rotate-6 scale-105 z-0 animate-[spin_10s_linear_infinite] opacity-70 filter blur-sm"></div>
+            <img src="Profile.jpg" alt="Md. Ariful Islam Ratul" onerror="this.src='/api/placeholder/400/400'" class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-slate-800 shadow-2xl">
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-white border-t border-slate-100 overflow-hidden">
+    <section id="experience" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 overflow-hidden transition-colors">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Professional Experience</h2>
-                <p class="text-slate-600">Track record of optimizing logistics and automating reporting across 9+ business units.</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-4 inline-block">Professional Experience</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">Track record of optimizing logistics and automating reporting across 9+ business units.</p>
             </div>
             
-            <div class="space-y-12">
+            <div class="space-y-12 pl-4 sm:pl-0">
                 <!-- AKIJ MTO -->
                 <div class="relative pl-8 md:pl-0" data-aos="fade-up" data-aos-delay="100">
-                    <div class="hidden md:block absolute left-[-45px] top-1.5 w-4 h-4 bg-brand-500 rounded-full border-4 border-white shadow-sm ring-2 ring-brand-100 z-10"></div>
-                    <div class="md:border-l-2 md:border-brand-100 md:pl-12 pb-2">
+                    <div class="hidden md:block absolute left-[-45px] top-1.5 w-4 h-4 bg-gradient-to-r from-brand-500 to-brand-400 rounded-full border-4 border-white dark:border-slate-900 shadow-sm ring-2 ring-brand-100 dark:ring-brand-900 z-10"></div>
+                    <div class="md:border-l-2 md:border-brand-100 dark:md:border-brand-900/50 md:pl-12 pb-2">
                         <div class="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
-                            <h3 class="text-2xl font-bold text-slate-900">UFLDP Management Trainee Officer - Operations</h3>
-                            <span class="inline-block px-3 py-1 bg-brand-50 text-brand-700 text-sm font-semibold rounded-full w-fit">Feb 2026 - Present</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">UFLDP Management Trainee Officer - Operations</h3>
+                            <span class="inline-block px-3 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs sm:text-sm font-semibold rounded-full w-fit">Feb 2026 - Present</span>
                         </div>
-                        <h4 class="text-lg text-slate-600 font-medium mb-4 flex items-center gap-2">
-                            <i data-lucide="building-2" class="w-4 h-4"></i> AKIJ Resource | Dhaka, Bangladesh
+                        <h4 class="text-base sm:text-lg text-slate-600 dark:text-slate-400 font-medium mb-4 flex items-center gap-2">
+                            <i data-lucide="building-2" class="w-4 h-4 text-brand-500"></i> AKIJ Resource | Dhaka, Bangladesh
                         </h4>
-                        <ul class="space-y-3 text-slate-600">
-                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> Developed a Production Planning Module for Building Solutions, achieving an average planning accuracy of <strong>85%</strong>.</li>
-                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> Built and managed integrated Power BI dashboards for AKIJ Ispat, Essential Flour Mill, and Agro Feed, reducing reporting cycle time up to <strong>15%</strong>.</li>
-                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> Implemented a Smart Delivery Tracking System for RMC and Asphalt, improving truck routing efficiency.</li>
+                        <ul class="space-y-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> <span>Developed a Production Planning Module for Building Solutions, achieving an average planning accuracy of <strong class="text-slate-900 dark:text-white">85%</strong>.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> <span>Built and managed integrated Power BI dashboards for AKIJ Ispat, Essential Flour Mill, and Agro Feed, reducing reporting cycle time up to <strong class="text-slate-900 dark:text-white">15%</strong>.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> <span>Implemented a Smart Delivery Tracking System for RMC and Asphalt, improving truck routing efficiency.</span></li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- AKIJ Intern -->
                 <div class="relative pl-8 md:pl-0" data-aos="fade-up" data-aos-delay="200">
-                    <div class="hidden md:block absolute left-[-45px] top-1.5 w-4 h-4 bg-slate-300 rounded-full border-4 border-white shadow-sm ring-2 ring-slate-100 z-10"></div>
-                    <div class="md:border-l-2 md:border-slate-200 md:pl-12 pb-2">
+                    <div class="hidden md:block absolute left-[-45px] top-1.5 w-4 h-4 bg-slate-300 dark:bg-slate-600 rounded-full border-4 border-white dark:border-slate-900 shadow-sm ring-2 ring-slate-100 dark:ring-slate-800 z-10"></div>
+                    <div class="md:border-l-2 md:border-slate-200 dark:md:border-slate-800 md:pl-12 pb-2">
                         <div class="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
-                            <h3 class="text-xl font-bold text-slate-900">NextGen Intern - OPEX, Planning</h3>
-                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-700 text-sm font-semibold rounded-full w-fit">Oct 2025 - Jan 2026</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">NextGen Intern - OPEX, Planning</h3>
+                            <span class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs sm:text-sm font-semibold rounded-full w-fit">Oct 2025 - Jan 2026</span>
                         </div>
-                        <h4 class="text-lg text-slate-600 font-medium mb-4 flex items-center gap-2">
-                            <i data-lucide="building-2" class="w-4 h-4"></i> AKIJ Resource | Dhaka, Bangladesh
+                        <h4 class="text-base sm:text-lg text-slate-600 dark:text-slate-400 font-medium mb-4 flex items-center gap-2">
+                            <i data-lucide="building-2" class="w-4 h-4 text-slate-400"></i> AKIJ Resource | Dhaka, Bangladesh
                         </h4>
-                        <ul class="space-y-3 text-slate-600">
-                            <li class="flex items-start gap-3"><i data-lucide="minus" class="w-4 h-4 text-slate-400 shrink-0 mt-1"></i> Analyzed production workflows to identify <strong>25%+ efficiency improvement</strong> opportunities using Lean Six Sigma.</li>
+                        <ul class="space-y-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                            <li class="flex items-start gap-3"><i data-lucide="minus" class="w-4 h-4 text-slate-400 dark:text-slate-500 shrink-0 mt-1"></i> <span>Analyzed production workflows to identify <strong class="text-slate-900 dark:text-white">25%+ efficiency improvement</strong> opportunities using Lean Six Sigma.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -145,102 +214,102 @@
     </section>
 
     <!-- Dashboards Section -->
-    <section id="dashboards" class="py-20 bg-slate-50 border-t border-slate-200">
+    <section id="dashboards" class="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Strategic Power BI Dashboards</h2>
-                <p class="text-slate-600 max-w-3xl mx-auto">Interactive analytics solutions designed to transform raw industrial data into actionable strategies—improving machine utilization, mitigating bottlenecks, and reducing overhead costs.</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-500 dark:from-brand-400 dark:to-cyan-300 mb-4 inline-block">Strategic Power BI Dashboards</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-sm sm:text-base">Interactive analytics solutions designed to transform raw industrial data into actionable strategies—improving machine utilization, mitigating bottlenecks, and reducing overhead costs.</p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
                 
                 <!-- Dashboard 1: OEE Tracker -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-slate-200 flex flex-col group" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-md dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
                     <div class="aspect-video bg-slate-900 relative">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/48P0TFTwTTY" title="OEE Tracker" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="w-full h-full dark:opacity-90" src="https://www.youtube.com/embed/48P0TFTwTTY" title="OEE Tracker" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="p-8 flex-1 flex flex-col">
+                    <div class="p-6 sm:p-8 flex-1 flex flex-col">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200">Power BI</span>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-800 border border-indigo-200">Equipment Utilization</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800/50">Power BI</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/50">Equipment Utilization</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Akij Ispat Operational Excellence (OEE) Tracker</h3>
-                        <p class="text-slate-600 mb-4 flex-1 leading-relaxed">
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Akij Ispat Operational Excellence (OEE) Tracker</h3>
+                        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 flex-1 leading-relaxed">
                             An Operations Management tool monitoring Overall Equipment Effectiveness (OEE), Availability, Performance, and Quality. It tracks total good production versus wastage across shift operations.
                         </p>
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <p class="text-sm text-slate-700">
-                                <i data-lucide="trending-up" class="w-4 h-4 inline text-brand-600 mb-1 mr-1"></i> 
-                                <strong>Operations Impact:</strong> Identifies root causes of micro-stops and machine downtime. This allows maintenance teams to act proactively, reducing unallocated overhead costs and maximizing daily factory throughput.
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <i data-lucide="trending-up" class="w-4 h-4 inline text-brand-600 dark:text-brand-400 mb-1 mr-1"></i> 
+                                <strong class="text-slate-900 dark:text-white">Operations Impact:</strong> Identifies root causes of micro-stops and machine downtime. This allows maintenance teams to act proactively, reducing unallocated overhead costs and maximizing daily factory throughput.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Dashboard 2: Planning vs Actual -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-slate-200 flex flex-col group" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-md dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
                     <div class="aspect-video bg-slate-900 relative">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/-PT8_vlovEA" title="Planning vs Actual" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="w-full h-full dark:opacity-90" src="https://www.youtube.com/embed/-PT8_vlovEA" title="Planning vs Actual" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="p-8 flex-1 flex flex-col">
+                    <div class="p-6 sm:p-8 flex-1 flex flex-col">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200">Power BI</span>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">Production Planning</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800/50">Power BI</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800/50">Production Planning</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Production Planning vs. Actual Output</h3>
-                        <p class="text-slate-600 mb-4 flex-1 leading-relaxed">
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Production Planning vs. Actual Output</h3>
+                        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 flex-1 leading-relaxed">
                             A comparative tracking system that pits scheduled production targets against real-time factory floor output. Highlights schedule adherence, performance gaps, and shift-wise achievement.
                         </p>
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <p class="text-sm text-slate-700">
-                                <i data-lucide="target" class="w-4 h-4 inline text-brand-600 mb-1 mr-1"></i> 
-                                <strong>Operations Impact:</strong> Facilitated the achievement of an 85% planning accuracy rate. Prevents overproduction waste, reduces unnecessary labor hours, and uncovers line bottlenecks instantly.
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <i data-lucide="target" class="w-4 h-4 inline text-brand-600 dark:text-brand-400 mb-1 mr-1"></i> 
+                                <strong class="text-slate-900 dark:text-white">Operations Impact:</strong> Facilitated the achievement of an 85% planning accuracy rate. Prevents overproduction waste, reduces unnecessary labor hours, and uncovers line bottlenecks instantly.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Dashboard 3: Raw Material -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-slate-200 flex flex-col group" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-md dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
                     <div class="aspect-video bg-slate-900 relative">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/EOTin-fNuYQ" title="Raw Material Visibility" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="w-full h-full dark:opacity-90" src="https://www.youtube.com/embed/EOTin-fNuYQ" title="Raw Material Visibility" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="p-8 flex-1 flex flex-col">
+                    <div class="p-6 sm:p-8 flex-1 flex flex-col">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200">Power BI</span>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">Inventory Tracking</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800/50">Power BI</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50">Inventory Tracking</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Raw Material & Inventory Visibility</h3>
-                        <p class="text-slate-600 mb-4 flex-1 leading-relaxed">
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Raw Material & Inventory Visibility</h3>
+                        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 flex-1 leading-relaxed">
                             Delivers granular visibility into Raw Material (RM) stock levels aligned with forecasted production demand, ensuring supply chain continuity across manufacturing units.
                         </p>
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <p class="text-sm text-slate-700">
-                                <i data-lucide="boxes" class="w-4 h-4 inline text-brand-600 mb-1 mr-1"></i> 
-                                <strong>Operations Impact:</strong> Significantly lowers inventory carrying costs. By ensuring RM availability exactly when needed, it entirely eliminates stockout-induced production downtime.
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <i data-lucide="boxes" class="w-4 h-4 inline text-brand-600 dark:text-brand-400 mb-1 mr-1"></i> 
+                                <strong class="text-slate-900 dark:text-white">Operations Impact:</strong> Significantly lowers inventory carrying costs. By ensuring RM availability exactly when needed, it entirely eliminates stockout-induced production downtime.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Dashboard 4: General Operations -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-slate-200 flex flex-col group" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-md dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
                     <div class="aspect-video bg-slate-900 relative">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/CGE5-SjdBqs" title="General Analytics" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="w-full h-full dark:opacity-90" src="https://www.youtube.com/embed/CGE5-SjdBqs" title="General Analytics" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="p-8 flex-1 flex flex-col">
+                    <div class="p-6 sm:p-8 flex-1 flex flex-col">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200">Power BI</span>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 border border-slate-300">Yield Analytics</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800/50">Power BI</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-600">Yield Analytics</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Factory Operations & Yield Analytics</h3>
-                        <p class="text-slate-600 mb-4 flex-1 leading-relaxed">
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Factory Operations & Yield Analytics</h3>
+                        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 flex-1 leading-relaxed">
                             High-level operational visibility for executive management across multiple SBUs, summarizing production outputs, machinery health, and overall factory efficiency metrics.
                         </p>
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <p class="text-sm text-slate-700">
-                                <i data-lucide="pie-chart" class="w-4 h-4 inline text-brand-600 mb-1 mr-1"></i> 
-                                <strong>Operations Impact:</strong> Streamlines capacity utilization tracking and reporting, driving strategic OPEX decisions and reducing manual reporting cycle times by up to 15%.
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                <i data-lucide="pie-chart" class="w-4 h-4 inline text-brand-600 dark:text-brand-400 mb-1 mr-1"></i> 
+                                <strong class="text-slate-900 dark:text-white">Operations Impact:</strong> Streamlines capacity utilization tracking and reporting, driving strategic OPEX decisions and reducing manual reporting cycle times by up to 15%.
                             </p>
                         </div>
                     </div>
@@ -251,80 +320,79 @@
     </section>
 
     <!-- Web Apps & Systems Section -->
-    <section id="webapps" class="py-20 bg-white border-t border-slate-200">
+    <section id="webapps" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Web Applications & Logistics Systems</h2>
-                <p class="text-slate-600 max-w-3xl mx-auto">Custom-built web platforms designed to replace static spreadsheets, centralize data, and optimize supply chain routing.</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-4 inline-block">Web Applications & Logistics Systems</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-sm sm:text-base">Custom-built web platforms designed to replace static spreadsheets, centralize data, and optimize supply chain routing.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Web App 1: Asphalt -->
-                <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 bg-slate-200 relative overflow-hidden border-b border-slate-200 group-hover:opacity-90 transition-opacity">
-                        <!-- Displaying Web App inside an iframe for live preview -->
-                        <iframe src="https://ratul-17.github.io/Asphalt/" class="w-[200%] h-[200%] transform scale-50 origin-top-left pointer-events-none" scrolling="no"></iframe>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-900 relative overflow-hidden border-b border-slate-200 dark:border-slate-700 group-hover:opacity-90 transition-opacity">
+                        <iframe src="https://ratul-17.github.io/Asphalt/" class="w-[200%] h-[200%] transform scale-50 origin-top-left pointer-events-none dark:opacity-80" scrolling="no"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 dark:from-slate-900/80 to-transparent"></div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex items-center gap-2 mb-3">
-                            <span class="px-2.5 py-1 rounded text-xs font-bold bg-green-100 text-green-800">Web App</span>
+                            <span class="px-2.5 py-1 rounded text-xs font-bold bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Web App</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">ABSL Asphalt Production Planning</h3>
-                        <p class="text-sm text-slate-600 mb-4 flex-1">
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">ABSL Asphalt Production Planning</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-4 flex-1">
                             A dynamic web-based production planning interface for Akij Building Solutions (Asphalt). Digitizes monthly planning sheets to eliminate static Excel file dependencies.
                         </p>
-                        <div class="mb-5 bg-white p-3 rounded-lg border border-slate-100 text-xs text-slate-700">
-                            <strong>Impact:</strong> Centralizes planning data, ensuring cross-functional teams have real-time access to targets, minimizing miscommunication.
+                        <div class="mb-5 bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-300">
+                            <strong class="text-slate-900 dark:text-white">Impact:</strong> Centralizes planning data, ensuring cross-functional teams have real-time access to targets, minimizing miscommunication.
                         </div>
-                        <a href="https://ratul-17.github.io/Asphalt/" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-slate-900 text-white font-medium hover:bg-brand-600 transition-colors">
+                        <a href="https://ratul-17.github.io/Asphalt/" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-slate-900 dark:bg-brand-600 text-white font-medium hover:bg-brand-600 dark:hover:bg-brand-500 transition-colors">
                             Visit Live App
                         </a>
                     </div>
                 </div>
 
                 <!-- Web App 2: Breakdown -->
-                <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 bg-slate-200 relative overflow-hidden border-b border-slate-200 group-hover:opacity-90 transition-opacity">
-                        <iframe src="https://ratul-17.github.io/Breakdown/" class="w-[200%] h-[200%] transform scale-50 origin-top-left pointer-events-none" scrolling="no"></iframe>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-900 relative overflow-hidden border-b border-slate-200 dark:border-slate-700 group-hover:opacity-90 transition-opacity">
+                        <iframe src="https://ratul-17.github.io/Breakdown/" class="w-[200%] h-[200%] transform scale-50 origin-top-left pointer-events-none dark:opacity-80" scrolling="no"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 dark:from-slate-900/80 to-transparent"></div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex items-center gap-2 mb-3">
-                            <span class="px-2.5 py-1 rounded text-xs font-bold bg-green-100 text-green-800">Web App</span>
+                            <span class="px-2.5 py-1 rounded text-xs font-bold bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Web App</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">SBU Breakdown & Maintenance Analyzer</h3>
-                        <p class="text-sm text-slate-600 mb-4 flex-1">
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">SBU Breakdown & Maintenance Analyzer</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-4 flex-1">
                             An analytical tool that logs and visualizes machinery breakdowns across multiple SBUs to pinpoint critical failures.
                         </p>
-                        <div class="mb-5 bg-white p-3 rounded-lg border border-slate-100 text-xs text-slate-700">
-                            <strong>Impact:</strong> Identifies frequently occurring breakdowns and root causes, enabling fast, data-driven decisions for preventative maintenance to reduce downtime.
+                        <div class="mb-5 bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-300">
+                            <strong class="text-slate-900 dark:text-white">Impact:</strong> Identifies frequently occurring breakdowns and root causes, enabling fast, data-driven decisions for preventative maintenance to reduce downtime.
                         </div>
-                        <a href="https://ratul-17.github.io/Breakdown/" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-slate-900 text-white font-medium hover:bg-brand-600 transition-colors">
+                        <a href="https://ratul-17.github.io/Breakdown/" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-slate-900 dark:bg-brand-600 text-white font-medium hover:bg-brand-600 dark:hover:bg-brand-500 transition-colors">
                             Visit Live App
                         </a>
                     </div>
                 </div>
 
                 <!-- Web App 3: Logistics -->
-                <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-48 bg-slate-900 relative overflow-hidden border-b border-slate-200 group-hover:opacity-90 transition-opacity flex items-center justify-center">
-                        <img src="Capture.PNG" alt="Delivery Tracking" onerror="this.src='/api/placeholder/600/400'" class="w-full h-full object-cover opacity-80">
+                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 bg-slate-900 relative overflow-hidden border-b border-slate-200 dark:border-slate-700 group-hover:opacity-90 transition-opacity flex items-center justify-center">
+                        <img src="Capture.PNG" alt="Delivery Tracking" onerror="this.src='/api/placeholder/600/400'" class="w-full h-full object-cover opacity-80 dark:opacity-60">
                         <i data-lucide="truck" class="w-12 h-12 text-white absolute"></i>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex items-center gap-2 mb-3">
-                            <span class="px-2.5 py-1 rounded text-xs font-bold bg-purple-100 text-purple-800">System Integration</span>
+                            <span class="px-2.5 py-1 rounded text-xs font-bold bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400">System Integration</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">ARMCL Delivery Tracking System</h3>
-                        <p class="text-sm text-slate-600 mb-4 flex-1">
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">ARMCL Delivery Tracking System</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-4 flex-1">
                             A Smart Delivery tracking dashboard tailored for RMC and Asphalt logistics. Maps out truck routing, dispatch queues, and delivery statuses in real-time.
                         </p>
-                        <div class="mb-5 bg-white p-3 rounded-lg border border-slate-100 text-xs text-slate-700">
-                            <strong>Impact:</strong> Optimizes truck routing and fuel usage. Radically improves on-time delivery rates while providing transparent SLA tracking for management.
+                        <div class="mb-5 bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-300">
+                            <strong class="text-slate-900 dark:text-white">Impact:</strong> Optimizes truck routing and fuel usage. Radically improves on-time delivery rates while providing transparent SLA tracking for management.
                         </div>
-                        <button class="w-full text-center py-2.5 rounded-lg bg-slate-200 text-slate-500 font-medium cursor-not-allowed">
+                        <button class="w-full text-center py-2.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 font-medium cursor-not-allowed">
                             Internal System
                         </button>
                     </div>
@@ -335,32 +403,32 @@
     </section>
 
     <!-- Academic Research Section -->
-    <section id="research" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <section id="research" class="py-20 bg-slate-900 dark:bg-slate-950 text-white relative overflow-hidden transition-colors">
         <!-- Abstract Background -->
-        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-brand-500 via-slate-900 to-slate-900"></div>
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-brand-500 via-slate-900 to-slate-900 dark:via-slate-950 dark:to-slate-950"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-white mb-4">Academic Research & Engineering Design</h2>
-                <p class="text-slate-400 max-w-3xl mx-auto">Applying machine learning and human factors engineering to solve complex, real-world public health and industrial challenges.</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Academic Research & Engineering Design</h2>
+                <p class="text-slate-400 max-w-3xl mx-auto text-sm sm:text-base">Applying machine learning and human factors engineering to solve complex, real-world public health and industrial challenges.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
                 <!-- Dengue Thesis -->
-                <div class="bg-slate-800/50 rounded-2xl border border-slate-700 p-8 hover:bg-slate-800 transition-colors" data-aos="fade-right">
+                <div class="bg-slate-800/60 dark:bg-slate-900/60 backdrop-blur-sm rounded-2xl border border-slate-700 dark:border-slate-800 p-6 sm:p-8 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors" data-aos="fade-right">
                     <div class="flex items-center justify-between mb-6">
-                        <div class="flex gap-2">
+                        <div class="flex flex-wrap gap-2">
                             <span class="px-3 py-1 rounded text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">Champion Thesis</span>
                             <span class="px-3 py-1 rounded text-xs font-bold bg-purple-500/20 text-purple-400 border border-purple-500/30">Machine Learning</span>
                         </div>
-                        <i data-lucide="stethoscope" class="w-8 h-8 text-brand-400"></i>
+                        <i data-lucide="stethoscope" class="w-8 h-8 text-brand-400 shrink-0 ml-2"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Proactive Dengue Outbreak Management & Allocation</h3>
-                    <p class="text-slate-300 mb-6 leading-relaxed">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Proactive Dengue Outbreak Management & Allocation</h3>
+                    <p class="text-sm sm:text-base text-slate-300 mb-6 leading-relaxed">
                         Utilized machine learning models (GradientBoost, Random Forest, SVM) over a 6-year dataset to forecast dengue medical resource demands (beds, ICUs) in the Dhaka South City Corporation (DSCC). Integrated the predictive outputs into a dynamic patient allocation system.
                     </p>
                     <div class="mb-8 border-l-2 border-brand-500 pl-4">
-                        <p class="text-sm text-slate-400">
+                        <p class="text-xs sm:text-sm text-slate-400">
                             <strong class="text-white">Solution & Impact:</strong> Replaces traditional reactive outbreak management with predictive capacity planning. Minimizes patient waiting times, prevents hospital overload, and ensures equitable access to critical resources during severe endemics.
                         </p>
                     </div>
@@ -375,20 +443,20 @@
                 </div>
 
                 <!-- Ergonomic Cart -->
-                <div class="bg-slate-800/50 rounded-2xl border border-slate-700 p-8 hover:bg-slate-800 transition-colors" data-aos="fade-left">
+                <div class="bg-slate-800/60 dark:bg-slate-900/60 backdrop-blur-sm rounded-2xl border border-slate-700 dark:border-slate-800 p-6 sm:p-8 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors" data-aos="fade-left">
                     <div class="flex items-center justify-between mb-6">
-                        <div class="flex gap-2">
+                        <div class="flex flex-wrap gap-2">
                             <span class="px-3 py-1 rounded text-xs font-bold bg-orange-500/20 text-orange-400 border border-orange-500/30">Product Design</span>
                             <span class="px-3 py-1 rounded text-xs font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30">SolidWorks</span>
                         </div>
-                        <i data-lucide="shopping-cart" class="w-8 h-8 text-brand-400"></i>
+                        <i data-lucide="shopping-cart" class="w-8 h-8 text-brand-400 shrink-0 ml-2"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Multipurpose Ergonomic Cart</h3>
-                    <p class="text-slate-300 mb-6 leading-relaxed">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Multipurpose Ergonomic Cart</h3>
+                    <p class="text-sm sm:text-base text-slate-300 mb-6 leading-relaxed">
                         Designed a highly adaptable, multipurpose ergonomic cart to optimize efficiency and comfort in various work environments (healthcare, labs, manufacturing). Modeled in SolidWorks, the design features customizable height settings, tilt options, and versatile storage to promote a healthy working posture.
                     </p>
                     <div class="mb-8 border-l-2 border-orange-500 pl-4">
-                        <p class="text-sm text-slate-400">
+                        <p class="text-xs sm:text-sm text-slate-400">
                             <strong class="text-white">Solution & Impact:</strong> Prioritizes user well-being by applying human factors engineering to reduce musculoskeletal strain and fatigue. Its robust mobility and functional design minimize the required workforce for material handling, boosting overall productivity.
                         </p>
                     </div>
@@ -403,22 +471,22 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-[#0ea5e9] text-white relative">
+    <section id="contact" class="py-24 bg-gradient-to-br from-[#0ea5e9] to-[#0c4a6e] dark:from-[#082f49] dark:to-[#020617] text-white relative transition-colors">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="zoom-in">
-            <h2 class="text-4xl font-extrabold mb-6">Ready to Optimize Your Operations?</h2>
-            <p class="text-blue-100 mb-12 text-xl max-w-2xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">Ready to Optimize Your Operations?</h2>
+            <p class="text-blue-100 dark:text-blue-200 mb-12 text-lg sm:text-xl max-w-2xl mx-auto">
                 I am actively open to discussing data-driven operational strategies, supply chain optimization, and collaborative tech projects.
             </p>
             
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
                 <!-- Clean Email Button -->
-                <a href="mailto:islamariful384@gmail.com" class="flex items-center gap-3 px-10 py-4 rounded-xl bg-[#0c4a6e] text-white font-bold hover:bg-[#082f49] transition-all transform hover:-translate-y-1 shadow-xl w-full sm:w-auto justify-center text-lg">
+                <a href="mailto:islamariful384@gmail.com" class="flex items-center gap-3 px-8 sm:px-10 py-4 rounded-xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold hover:bg-white/20 dark:hover:bg-white/10 transition-all transform hover:-translate-y-1 shadow-xl w-full sm:w-auto justify-center text-base sm:text-lg">
                     <i data-lucide="mail" class="w-6 h-6 text-blue-300"></i>
                     Email Me Directly
                 </a>
                 
                 <!-- Clean LinkedIn Button -->
-                <a href="https://www.linkedin.com/in/arifulislam620/" target="_blank" class="flex items-center gap-3 px-10 py-4 rounded-xl bg-transparent border-2 border-white text-white font-bold hover:bg-white hover:text-[#0ea5e9] transition-all transform hover:-translate-y-1 shadow-xl w-full sm:w-auto justify-center text-lg">
+                <a href="https://www.linkedin.com/in/arifulislam620/" target="_blank" class="flex items-center gap-3 px-8 sm:px-10 py-4 rounded-xl bg-[#0077b5] text-white font-bold hover:bg-[#006097] transition-all transform hover:-translate-y-1 shadow-xl w-full sm:w-auto justify-center text-base sm:text-lg">
                     <i data-lucide="linkedin" class="w-6 h-6"></i>
                     Connect on LinkedIn
                 </a>
@@ -427,8 +495,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 py-10 text-center border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer class="bg-slate-950 dark:bg-black text-slate-400 py-10 text-center border-t border-slate-800 dark:border-slate-900 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
             <p class="text-sm font-medium">&copy; 2026 Md. Ariful Islam (Ratul). All rights reserved.</p>
             <div class="flex gap-6">
                 <a href="https://github.com/Ratul-17/" target="_blank" class="hover:text-white transition-colors transform hover:scale-110"><i data-lucide="github" class="w-5 h-5"></i></a>
@@ -446,21 +514,81 @@
         
         // Initialize AOS Animations
         AOS.init({
-            once: true, // whether animation should happen only once - while scrolling down
-            offset: 100, // offset (in px) from the original trigger point
-            duration: 800, // values from 0 to 3000, with step 50ms
+            once: true,
+            offset: 50,
+            duration: 800,
         });
 
-        // Sticky Navbar background blur effect
+        // Navbar blur effect on scroll
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 20) {
-                nav.classList.add('shadow-md', 'bg-white/95');
-                nav.classList.remove('bg-white/80');
+                nav.classList.add('shadow-md');
+                if (document.documentElement.classList.contains('dark')) {
+                    nav.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
+                } else {
+                    nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                }
             } else {
-                nav.classList.remove('shadow-md', 'bg-white/95');
-                nav.classList.add('bg-white/80');
+                nav.classList.remove('shadow-md');
+                nav.style.backgroundColor = '';
             }
+        });
+
+        // Dark Mode Logic Setup
+        const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+        const themeToggleDarkIcons = [document.getElementById('theme-toggle-dark-icon'), document.getElementById('theme-toggle-dark-icon-mobile')];
+        const themeToggleLightIcons = [document.getElementById('theme-toggle-light-icon'), document.getElementById('theme-toggle-light-icon-mobile')];
+
+        // Initial icon state
+        if (document.documentElement.classList.contains('dark')) {
+            themeToggleLightIcons.forEach(el => el.classList.remove('hidden'));
+        } else {
+            themeToggleDarkIcons.forEach(el => el.classList.remove('hidden'));
+        }
+
+        // Toggle logic
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                themeToggleDarkIcons.forEach(el => el.classList.toggle('hidden'));
+                themeToggleLightIcons.forEach(el => el.classList.toggle('hidden'));
+
+                if (localStorage.getItem('color-theme')) {
+                    if (localStorage.getItem('color-theme') === 'light') {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    }
+                } else {
+                    if (document.documentElement.classList.contains('dark')) {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    } else {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    }
+                }
+                
+                // Trigger scroll event to update navbar color based on new theme
+                window.dispatchEvent(new Event('scroll'));
+            });
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
     </script>
 </body>
