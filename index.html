@@ -68,7 +68,7 @@
 <body class="font-sans text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 antialiased selection:bg-brand-500 selection:text-white overflow-x-hidden transition-colors duration-300">
 
     <!-- Navigation -->
-    <nav class="fixed w-full glass-nav z-50 border-b border-slate-200 transition-all duration-300">
+    <nav class="fixed w-full glass-nav z-50 border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
@@ -79,9 +79,11 @@
                 <div class="hidden lg:flex items-center space-x-6">
                     <a href="#about" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">About</a>
                     <a href="#experience" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Experience</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Skills</a>
                     <a href="#dashboards" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Dashboards</a>
                     <a href="#webapps" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Systems</a>
                     <a href="#research" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Research</a>
+                    <a href="#certifications" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Certs</a>
                     
                     <!-- Dark Mode Toggle -->
                     <button id="theme-toggle" type="button" class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none rounded-lg text-sm p-2.5 transition-colors">
@@ -113,9 +115,11 @@
             <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
                 <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
                 <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Experience</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Skills</a>
                 <a href="#dashboards" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Dashboards</a>
                 <a href="#webapps" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Systems</a>
                 <a href="#research" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Research</a>
+                <a href="#certifications" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Certifications</a>
                 <a href="CV_Md. Ariful Islam.pdf" download class="mt-4 w-full flex justify-center items-center gap-2 px-4 py-3 rounded-xl bg-brand-600 text-white font-medium">
                     <i data-lucide="download" class="w-4 h-4"></i> Download CV
                 </a>
@@ -133,8 +137,9 @@
         </div>
 
         <div class="flex-1 space-y-6 w-full text-center md:text-left" data-aos="fade-right" data-aos-duration="1000">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm border border-brand-100 dark:border-slate-700 text-brand-600 dark:text-brand-400 font-medium text-xs sm:text-sm shadow-sm mx-auto md:mx-0">
-                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+            <!-- Enhanced Designation Badge for Dark Mode Visibility -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50/90 dark:bg-brand-900/40 backdrop-blur-sm border border-brand-200 dark:border-brand-400/50 text-brand-700 dark:text-brand-300 font-bold text-xs sm:text-sm shadow-[0_0_15px_rgba(14,165,233,0.15)] dark:shadow-[0_0_15px_rgba(14,165,233,0.3)] mx-auto md:mx-0">
+                <span class="w-2 h-2 rounded-full bg-brand-500 dark:bg-brand-400 animate-pulse shadow-[0_0_5px_rgba(14,165,233,0.8)]"></span>
                 Management Trainee Officer (Operations) - AKIJ Resource
             </div>
             <h1 class="text-4xl sm:text-5xl md:text-5xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-tight">
@@ -158,9 +163,10 @@
             </div>
         </div>
         
-        <!-- Profile Picture Container -->
+        <!-- Profile Picture Container (Updated Name) -->
         <div class="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 relative flex-shrink-0 mx-auto md:mx-0 mt-8 md:mt-0" data-aos="zoom-in" data-aos-duration="1000">
             <div class="absolute inset-0 bg-gradient-to-tr from-brand-300 to-purple-300 dark:from-brand-600/50 dark:to-purple-600/50 rounded-full transform -rotate-6 scale-105 z-0 animate-[spin_10s_linear_infinite] opacity-70 filter blur-sm"></div>
+            <!-- Updated to Profile.jpg -->
             <img src="Profile.jpg" alt="Md. Ariful Islam Ratul" onerror="this.src='/api/placeholder/400/400'" class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-slate-800 shadow-2xl">
         </div>
     </section>
@@ -213,8 +219,84 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-500 dark:from-brand-400 dark:to-cyan-300 mb-4 inline-block">Core Competencies & Skills</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-sm sm:text-base">A comprehensive toolkit spanning advanced data analytics, industrial operations, modern software development, and strategic management.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Data & Analytics -->
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-lg dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-5 border border-blue-100 dark:border-blue-800/50">
+                        <i data-lucide="database" class="w-6 h-6 text-brand-600 dark:text-brand-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Data & Analytics</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-semibold rounded border border-brand-100 dark:border-brand-800/50">Power BI</span>
+                        <span class="px-2.5 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-semibold rounded border border-brand-100 dark:border-brand-800/50">Python</span>
+                        <span class="px-2.5 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-semibold rounded border border-brand-100 dark:border-brand-800/50">SQL</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">Advanced Excel</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">Data Visualization</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">Dashboard Reporting</span>
+                    </div>
+                </div>
+
+                <!-- Operations & Process -->
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-lg dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-amber-50 dark:bg-amber-900/30 rounded-xl flex items-center justify-center mb-5 border border-amber-100 dark:border-amber-800/50">
+                        <i data-lucide="factory" class="w-6 h-6 text-amber-600 dark:text-amber-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Operations & OPEX</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Lean Six Sigma (DMAIC)</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Production Planning (PPC)</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Supply Chain</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Root Cause Analysis</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Capacity Planning</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Continuous Improvement</span>
+                    </div>
+                </div>
+
+                <!-- Tech & Software -->
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-lg dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-purple-50 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mb-5 border border-purple-100 dark:border-purple-800/50">
+                        <i data-lucide="cpu" class="w-6 h-6 text-purple-600 dark:text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Tech & Software</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-semibold rounded border border-purple-100 dark:border-purple-800/50">Machine Learning</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">n8n (AI Agent Automation)</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">SolidWorks</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">Industrial IoT (IIoT)</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">Microsoft Office Suite</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">Canva</span>
+                    </div>
+                </div>
+                
+                <!-- Professional Skills -->
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-lg dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center mb-5 border border-emerald-100 dark:border-emerald-800/50">
+                        <i data-lucide="users" class="w-6 h-6 text-emerald-600 dark:text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Professional Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Stakeholder Management</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Cross-functional Coordination</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Strategic Planning</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Decision Making</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Logistics Planning</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded border border-slate-200 dark:border-slate-700">Leadership</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Dashboards Section -->
-    <section id="dashboards" class="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors">
+    <section id="dashboards" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-500 dark:from-brand-400 dark:to-cyan-300 mb-4 inline-block">Strategic Power BI Dashboards</h2>
@@ -224,7 +306,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
                 
                 <!-- Dashboard 1: OEE Tracker -->
-                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-md dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
                     <div class="aspect-video bg-slate-900 relative">
                         <iframe class="w-full h-full dark:opacity-90" src="https://www.youtube.com/embed/48P0TFTwTTY" title="OEE Tracker" frameborder="0" allowfullscreen></iframe>
                     </div>
@@ -237,7 +319,7 @@
                         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 flex-1 leading-relaxed">
                             An Operations Management tool monitoring Overall Equipment Effectiveness (OEE), Availability, Performance, and Quality. It tracks total good production versus wastage across shift operations.
                         </p>
-                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
                             <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
                                 <i data-lucide="trending-up" class="w-4 h-4 inline text-brand-600 dark:text-brand-400 mb-1 mr-1"></i> 
                                 <strong class="text-slate-900 dark:text-white">Operations Impact:</strong> Identifies root causes of micro-stops and machine downtime. This allows maintenance teams to act proactively, reducing unallocated overhead costs and maximizing daily factory throughput.
@@ -247,7 +329,7 @@
                 </div>
 
                 <!-- Dashboard 2: Planning vs Actual -->
-                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-md dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
                     <div class="aspect-video bg-slate-900 relative">
                         <iframe class="w-full h-full dark:opacity-90" src="https://www.youtube.com/embed/-PT8_vlovEA" title="Planning vs Actual" frameborder="0" allowfullscreen></iframe>
                     </div>
@@ -260,7 +342,7 @@
                         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 flex-1 leading-relaxed">
                             A comparative tracking system that pits scheduled production targets against real-time factory floor output. Highlights schedule adherence, performance gaps, and shift-wise achievement.
                         </p>
-                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
                             <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
                                 <i data-lucide="target" class="w-4 h-4 inline text-brand-600 dark:text-brand-400 mb-1 mr-1"></i> 
                                 <strong class="text-slate-900 dark:text-white">Operations Impact:</strong> Facilitated the achievement of an 85% planning accuracy rate. Prevents overproduction waste, reduces unnecessary labor hours, and uncovers line bottlenecks instantly.
@@ -270,7 +352,7 @@
                 </div>
 
                 <!-- Dashboard 3: Raw Material -->
-                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-md dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
                     <div class="aspect-video bg-slate-900 relative">
                         <iframe class="w-full h-full dark:opacity-90" src="https://www.youtube.com/embed/EOTin-fNuYQ" title="Raw Material Visibility" frameborder="0" allowfullscreen></iframe>
                     </div>
@@ -283,7 +365,7 @@
                         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 flex-1 leading-relaxed">
                             Delivers granular visibility into Raw Material (RM) stock levels aligned with forecasted production demand, ensuring supply chain continuity across manufacturing units.
                         </p>
-                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
                             <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
                                 <i data-lucide="boxes" class="w-4 h-4 inline text-brand-600 dark:text-brand-400 mb-1 mr-1"></i> 
                                 <strong class="text-slate-900 dark:text-white">Operations Impact:</strong> Significantly lowers inventory carrying costs. By ensuring RM availability exactly when needed, it entirely eliminates stockout-induced production downtime.
@@ -293,7 +375,7 @@
                 </div>
 
                 <!-- Dashboard 4: General Operations -->
-                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-md dark:shadow-slate-900/50 border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
                     <div class="aspect-video bg-slate-900 relative">
                         <iframe class="w-full h-full dark:opacity-90" src="https://www.youtube.com/embed/CGE5-SjdBqs" title="General Analytics" frameborder="0" allowfullscreen></iframe>
                     </div>
@@ -306,7 +388,7 @@
                         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 flex-1 leading-relaxed">
                             High-level operational visibility for executive management across multiple SBUs, summarizing production outputs, machinery health, and overall factory efficiency metrics.
                         </p>
-                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+                        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
                             <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
                                 <i data-lucide="pie-chart" class="w-4 h-4 inline text-brand-600 dark:text-brand-400 mb-1 mr-1"></i> 
                                 <strong class="text-slate-900 dark:text-white">Operations Impact:</strong> Streamlines capacity utilization tracking and reporting, driving strategic OPEX decisions and reducing manual reporting cycle times by up to 15%.
@@ -320,7 +402,7 @@
     </section>
 
     <!-- Web Apps & Systems Section -->
-    <section id="webapps" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
+    <section id="webapps" class="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 mb-4 inline-block">Web Applications & Logistics Systems</h2>
@@ -330,7 +412,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Web App 1: Asphalt -->
-                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="100">
                     <div class="h-48 bg-slate-200 dark:bg-slate-900 relative overflow-hidden border-b border-slate-200 dark:border-slate-700 group-hover:opacity-90 transition-opacity">
                         <iframe src="https://ratul-17.github.io/Asphalt/" class="w-[200%] h-[200%] transform scale-50 origin-top-left pointer-events-none dark:opacity-80" scrolling="no"></iframe>
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 dark:from-slate-900/80 to-transparent"></div>
@@ -343,7 +425,7 @@
                         <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-4 flex-1">
                             A dynamic web-based production planning interface for Akij Building Solutions (Asphalt). Digitizes monthly planning sheets to eliminate static Excel file dependencies.
                         </p>
-                        <div class="mb-5 bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-300">
+                        <div class="mb-5 bg-slate-50 dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-300">
                             <strong class="text-slate-900 dark:text-white">Impact:</strong> Centralizes planning data, ensuring cross-functional teams have real-time access to targets, minimizing miscommunication.
                         </div>
                         <a href="https://ratul-17.github.io/Asphalt/" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-slate-900 dark:bg-brand-600 text-white font-medium hover:bg-brand-600 dark:hover:bg-brand-500 transition-colors">
@@ -353,7 +435,7 @@
                 </div>
 
                 <!-- Web App 2: Breakdown -->
-                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="200">
                     <div class="h-48 bg-slate-200 dark:bg-slate-900 relative overflow-hidden border-b border-slate-200 dark:border-slate-700 group-hover:opacity-90 transition-opacity">
                         <iframe src="https://ratul-17.github.io/Breakdown/" class="w-[200%] h-[200%] transform scale-50 origin-top-left pointer-events-none dark:opacity-80" scrolling="no"></iframe>
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 dark:from-slate-900/80 to-transparent"></div>
@@ -366,7 +448,7 @@
                         <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-4 flex-1">
                             An analytical tool that logs and visualizes machinery breakdowns across multiple SBUs to pinpoint critical failures.
                         </p>
-                        <div class="mb-5 bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-300">
+                        <div class="mb-5 bg-slate-50 dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-300">
                             <strong class="text-slate-900 dark:text-white">Impact:</strong> Identifies frequently occurring breakdowns and root causes, enabling fast, data-driven decisions for preventative maintenance to reduce downtime.
                         </div>
                         <a href="https://ratul-17.github.io/Breakdown/" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-slate-900 dark:bg-brand-600 text-white font-medium hover:bg-brand-600 dark:hover:bg-brand-500 transition-colors">
@@ -376,7 +458,7 @@
                 </div>
 
                 <!-- Web App 3: Logistics -->
-                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm dark:shadow-md border border-slate-200 dark:border-slate-700 flex flex-col group hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="300">
                     <div class="h-48 bg-slate-900 relative overflow-hidden border-b border-slate-200 dark:border-slate-700 group-hover:opacity-90 transition-opacity flex items-center justify-center">
                         <img src="Capture.PNG" alt="Delivery Tracking" onerror="this.src='/api/placeholder/600/400'" class="w-full h-full object-cover opacity-80 dark:opacity-60">
                         <i data-lucide="truck" class="w-12 h-12 text-white absolute"></i>
@@ -389,7 +471,7 @@
                         <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-4 flex-1">
                             A Smart Delivery tracking dashboard tailored for RMC and Asphalt logistics. Maps out truck routing, dispatch queues, and delivery statuses in real-time.
                         </p>
-                        <div class="mb-5 bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-300">
+                        <div class="mb-5 bg-slate-50 dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-300">
                             <strong class="text-slate-900 dark:text-white">Impact:</strong> Optimizes truck routing and fuel usage. Radically improves on-time delivery rates while providing transparent SLA tracking for management.
                         </div>
                         <button class="w-full text-center py-2.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 font-medium cursor-not-allowed">
@@ -464,6 +546,117 @@
                         <a href="Minimization on Workforce, Multipurpose Ergonomic Cart.pdf" target="_blank" class="px-5 py-2.5 rounded-lg bg-transparent border border-slate-600 text-slate-300 hover:bg-slate-700 transition-colors flex items-center gap-2">
                             <i data-lucide="file-text" class="w-4 h-4"></i> View Report
                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-500 dark:from-brand-400 dark:to-cyan-300 mb-4 inline-block">Licenses & Certifications</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">Continuous learning and professional development across analytics, operations, and modern technology.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Data Solution 360 -->
+                <div class="flex items-start gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-3 bg-brand-100 dark:bg-brand-900/50 rounded-lg text-brand-600 dark:text-brand-400 shrink-0">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Data Analyst Job Ready Bootcamp</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Data Solution 360 • 2024</p>
+                    </div>
+                </div>
+
+                <!-- Coursera: Supply Chain -->
+                <div class="flex items-start gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="150">
+                    <div class="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-lg text-blue-600 dark:text-blue-400 shrink-0">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Supply Chain Planning</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Coursera (Rutgers University)</p>
+                    </div>
+                </div>
+
+                <!-- Coursera: AI Agents -->
+                <div class="flex items-start gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-3 bg-purple-100 dark:bg-purple-900/50 rounded-lg text-purple-600 dark:text-purple-400 shrink-0">
+                        <i data-lucide="bot" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Building AI Agents: Elementary to Advanced</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Coursera</p>
+                    </div>
+                </div>
+
+                <!-- Coursera: Excel -->
+                <div class="flex items-start gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="250">
+                    <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 rounded-lg text-emerald-600 dark:text-emerald-400 shrink-0">
+                        <i data-lucide="sheet" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Excel Skills for Business: Specialization</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Coursera • 2023</p>
+                    </div>
+                </div>
+
+                <!-- Coursera: IIoT -->
+                <div class="flex items-start gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-3 bg-slate-200 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-300 shrink-0">
+                        <i data-lucide="wifi" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Industrial Internet of Things (IIoT)</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Coursera • 2023</p>
+                    </div>
+                </div>
+
+                <!-- HP Life: Agile -->
+                <div class="flex items-start gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="350">
+                    <div class="p-3 bg-amber-100 dark:bg-amber-900/50 rounded-lg text-amber-600 dark:text-amber-400 shrink-0">
+                        <i data-lucide="kanban" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Agile Project Management</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">HP Life • 2024</p>
+                    </div>
+                </div>
+
+                <!-- Coursera: AI for Everyone -->
+                <div class="flex items-start gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="400">
+                    <div class="p-3 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg text-indigo-600 dark:text-indigo-400 shrink-0">
+                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-base">AI for Everyone</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Coursera • 2023</p>
+                    </div>
+                </div>
+
+                <!-- HP Life: Circular Economy -->
+                <div class="flex items-start gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="450">
+                    <div class="p-3 bg-green-100 dark:bg-green-900/50 rounded-lg text-green-600 dark:text-green-400 shrink-0">
+                        <i data-lucide="recycle" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Circular Economy</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">HP Life • 2024</p>
+                    </div>
+                </div>
+
+                <!-- Udemy: Canva -->
+                <div class="flex items-start gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="500">
+                    <div class="p-3 bg-rose-100 dark:bg-rose-900/50 rounded-lg text-rose-600 dark:text-rose-400 shrink-0">
+                        <i data-lucide="palette" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Essential Canva Course for Graphic Design</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Udemy • 2022</p>
                     </div>
                 </div>
             </div>
