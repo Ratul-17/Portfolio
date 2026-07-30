@@ -93,8 +93,8 @@
                     </button>
                     
                     <!-- CV Download Button -->
-                    <a href="CV_Md. Ariful Islam.pdf" download class="px-4 py-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-700 dark:from-brand-600 dark:to-brand-500 text-white hover:shadow-lg transition-all font-medium text-sm flex items-center gap-2 transform hover:-translate-y-0.5">
-                        <i data-lucide="download" class="w-4 h-4"></i> Download CV
+                    <a href="#" id="cv-request-btn-desktop" class="px-4 py-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-700 dark:from-brand-600 dark:to-brand-500 text-white hover:shadow-lg transition-all font-medium text-sm flex items-center gap-2 transform hover:-translate-y-0.5">
+                        <i data-lucide="lock" class="w-4 h-4"></i> Request CV Access
                     </a>
                 </div>
 
@@ -122,8 +122,8 @@
                 <a href="#research" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Research</a>
                 <a href="#certifications" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Certifications</a>
                 <a href="#awards" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Awards</a>
-                <a href="CV_Md. Ariful Islam.pdf" download class="mt-4 w-full flex justify-center items-center gap-2 px-4 py-3 rounded-xl bg-brand-600 text-white font-medium">
-                    <i data-lucide="download" class="w-4 h-4"></i> Download CV
+                                <a href="#" id="cv-request-btn-mobile" class="mt-4 w-full flex justify-center items-center gap-2 px-4 py-3 rounded-xl bg-brand-600 text-white font-medium">
+                    <i data-lucide="lock" class="w-4 h-4"></i> Request CV Access
                 </a>
             </div>
         </div>
@@ -184,24 +184,24 @@
             
             <div class="space-y-12 pl-4 sm:pl-0">
                 <!-- BAT Bangladesh Team Leader -->
-                <div class="relative pl-8 md:pl-0" data-aos="fade-up" data-aos-delay="0">
+                <div class="relative pl-8 md:pl-0" id="bat-entry" data-aos="fade-up" data-aos-delay="0">
                     <div class="hidden md:flex absolute left-[-49px] top-0 w-6 h-6 items-center justify-center">
-                        <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
-                        <span class="relative inline-flex w-4 h-4 bg-gradient-to-r from-emerald-500 to-brand-500 rounded-full border-4 border-white dark:border-slate-900 shadow-sm ring-2 ring-emerald-100 dark:ring-emerald-900 z-10"></span>
+                        <span id="bat-pulse-ring" class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+                        <span id="bat-marker" class="relative inline-flex w-4 h-4 bg-gradient-to-r from-emerald-500 to-brand-500 rounded-full border-4 border-white dark:border-slate-900 shadow-sm ring-2 ring-emerald-100 dark:ring-emerald-900 z-10"></span>
                     </div>
-                    <div class="md:border-l-2 md:border-emerald-200 dark:md:border-emerald-800/60 md:pl-12 pb-2 relative rounded-r-2xl bg-gradient-to-r from-emerald-50/60 to-transparent dark:from-emerald-900/10 dark:to-transparent -mx-4 sm:mx-0 px-4 sm:px-0 py-4 sm:py-0">
+                    <div id="bat-card" class="md:border-l-2 md:border-emerald-200 dark:md:border-emerald-800/60 md:pl-12 pb-2 relative rounded-r-2xl bg-gradient-to-r from-emerald-50/60 to-transparent dark:from-emerald-900/10 dark:to-transparent -mx-4 sm:mx-0 px-4 sm:px-0 py-4 sm:py-0">
                         <div class="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
                             <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 flex-wrap">
                                 Team Leader - SMD
-                                <span class="px-2 py-0.5 text-[10px] sm:text-xs font-bold uppercase tracking-wide rounded-full bg-emerald-500 text-white shadow-sm">Incoming</span>
+                                <span id="bat-status-badge" class="px-2 py-0.5 text-[10px] sm:text-xs font-bold uppercase tracking-wide rounded-full bg-emerald-500 text-white shadow-sm">Incoming</span>
                             </h3>
-                            <span class="inline-block px-3 py-1 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm font-semibold rounded-full w-fit">Starts Aug 2, 2026</span>
+                            <span id="bat-date-label" class="inline-block px-3 py-1 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm font-semibold rounded-full w-fit">Starts Aug 2, 2026</span>
                         </div>
                         <h4 class="text-base sm:text-lg text-slate-600 dark:text-slate-400 font-medium mb-4 flex items-center gap-2">
-                            <i data-lucide="building-2" class="w-4 h-4 text-emerald-500"></i> BAT Bangladesh | Dhaka, Bangladesh
+                            <i data-lucide="building-2" id="bat-icon" class="w-4 h-4 text-emerald-500"></i> BAT Bangladesh | Dhaka, Bangladesh
                         </h4>
                         <ul class="space-y-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
-                            <li class="flex items-start gap-3"><i data-lucide="rocket" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i> <span>Taking on a Team Leader role within Supply Chain / SMD, moving from operations planning at a diversified conglomerate to leading execution at a global FMCG leader.</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="rocket" id="bat-bullet-icon" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i> <span id="bat-bullet-text">Taking on a Team Leader role within Supply Chain / SMD, moving from operations planning at a diversified conglomerate to leading execution at a global FMCG leader.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -212,7 +212,7 @@
                     <div class="md:border-l-2 md:border-brand-100 dark:md:border-brand-900/50 md:pl-12 pb-2">
                         <div class="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
                             <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">UFLDP Management Trainee Officer - Operations</h3>
-                            <span class="inline-block px-3 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs sm:text-sm font-semibold rounded-full w-fit">Feb 2026 - Jul 2026</span>
+                            <span class="inline-block px-3 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs sm:text-sm font-semibold rounded-full w-fit">Feb 2026 - Present</span>
                         </div>
                         <h4 class="text-base sm:text-lg text-slate-600 dark:text-slate-400 font-medium mb-4 flex items-center gap-2">
                             <i data-lucide="building-2" class="w-4 h-4 text-brand-500"></i> AKIJ Resource | Dhaka, Bangladesh
@@ -822,11 +822,98 @@
         </div>
     </footer>
 
+    <!-- CV Access Request Modal -->
+    <div id="cv-modal-overlay" class="hidden fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-700 relative" id="cv-modal-box">
+
+            <!-- Step 1: Request Form -->
+            <div id="cv-modal-step-form">
+                <button id="cv-modal-close" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                <div class="w-12 h-12 bg-brand-50 dark:bg-brand-900/30 rounded-xl flex items-center justify-center mb-4 border border-brand-100 dark:border-brand-800/50">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-brand-600 dark:text-brand-400"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Request CV Access</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 leading-relaxed">
+                    My CV isn't open for direct download. Share a bit about yourself below and I'll personally review and email it to you.
+                </p>
+                <div class="space-y-3">
+                    <input type="text" id="cv-req-name" placeholder="Your name" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <input type="email" id="cv-req-email" placeholder="Your email" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <input type="text" id="cv-req-org" placeholder="Company / Organization (optional)" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <textarea id="cv-req-reason" rows="2" placeholder="Reason for request (optional)" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 resize-none"></textarea>
+                </div>
+                <button id="cv-req-submit" class="mt-5 w-full py-3 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 text-white font-bold hover:from-brand-500 hover:to-brand-400 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i> Send Request
+                </button>
+                <p class="text-xs text-slate-400 dark:text-slate-500 mt-3 text-center">This opens your email app with a pre-filled message to me — nothing is sent automatically.</p>
+            </div>
+
+            <!-- Step 2: Confirmation -->
+            <div id="cv-modal-step-confirm" class="hidden text-center py-4">
+                <div class="w-14 h-14 bg-emerald-50 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mb-4 mx-auto border border-emerald-100 dark:border-emerald-800/50">
+                    <i data-lucide="mail-check" class="w-7 h-7 text-emerald-600 dark:text-emerald-400"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Request Ready to Send</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 leading-relaxed">
+                    Your email app should now be open with the request pre-filled. Once you send it, I'll review it personally and reply with the CV if approved.
+                </p>
+                <button id="cv-modal-done" class="w-full py-3 rounded-xl bg-slate-900 dark:bg-slate-700 text-white font-bold hover:bg-slate-800 dark:hover:bg-slate-600 transition-all">
+                    Got it
+                </button>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
+
+        // Auto-promote the BAT Bangladesh role from "Incoming" to "Present"
+        // once its start date arrives — no manual edit needed later.
+        (function () {
+            const startDate = new Date('2026-08-02T00:00:00');
+            const now = new Date();
+            if (now < startDate) return; // still upcoming, leave the "Incoming" styling as-is
+
+            const badge = document.getElementById('bat-status-badge');
+            const dateLabel = document.getElementById('bat-date-label');
+            const card = document.getElementById('bat-card');
+            const marker = document.getElementById('bat-marker');
+            const pulseRing = document.getElementById('bat-pulse-ring');
+            const icon = document.getElementById('bat-icon');
+            const bulletIcon = document.getElementById('bat-bullet-icon');
+            const bulletText = document.getElementById('bat-bullet-text');
+
+            if (badge) badge.remove();
+            if (pulseRing) pulseRing.remove();
+
+            if (dateLabel) {
+                dateLabel.textContent = 'Aug 2026 - Present';
+                dateLabel.className = 'inline-block px-3 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs sm:text-sm font-semibold rounded-full w-fit';
+            }
+            if (card) {
+                card.className = 'md:border-l-2 md:border-brand-100 dark:md:border-brand-900/50 md:pl-12 pb-2';
+            }
+            if (marker) {
+                marker.className = 'relative inline-flex w-4 h-4 bg-gradient-to-r from-brand-500 to-brand-400 rounded-full border-4 border-white dark:border-slate-900 shadow-sm ring-2 ring-brand-100 dark:ring-brand-900 z-10';
+            }
+            if (icon) icon.classList.replace('text-emerald-500', 'text-brand-500');
+            if (bulletIcon) {
+                bulletIcon.setAttribute('data-lucide', 'check-circle-2');
+                bulletIcon.classList.replace('text-emerald-500', 'text-brand-500');
+            }
+            if (bulletText) {
+                bulletText.textContent = 'Leading Team Leader - SMD responsibilities within Supply Chain, moving from operations planning at a diversified conglomerate to execution leadership at a global FMCG leader.';
+            }
+
+            // Re-render icons since we changed a data-lucide attribute after the first pass
+            lucide.createIcons();
+        })();
         
         // Initialize AOS Animations
         AOS.init({
@@ -906,6 +993,63 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // ---- CV Access Request Flow ----
+        // Clicking "Request CV Access" opens a short form, then builds a
+        // pre-filled email to Ratul. Nothing downloads automatically —
+        // he reviews each request and replies with the CV himself if approved.
+        (function () {
+            const OWNER_EMAIL = 'islamariful384@gmail.com';
+            const overlay = document.getElementById('cv-modal-overlay');
+            const stepForm = document.getElementById('cv-modal-step-form');
+            const stepConfirm = document.getElementById('cv-modal-step-confirm');
+            const openBtns = [document.getElementById('cv-request-btn-desktop'), document.getElementById('cv-request-btn-mobile')];
+            const closeBtn = document.getElementById('cv-modal-close');
+            const doneBtn = document.getElementById('cv-modal-done');
+            const submitBtn = document.getElementById('cv-req-submit');
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                overlay.classList.remove('hidden');
+                stepForm.classList.remove('hidden');
+                stepConfirm.classList.add('hidden');
+                mobileMenu.classList.add('hidden');
+            }
+            function closeModal() {
+                overlay.classList.add('hidden');
+            }
+
+            openBtns.forEach(btn => btn && btn.addEventListener('click', openModal));
+            closeBtn.addEventListener('click', closeModal);
+            doneBtn.addEventListener('click', closeModal);
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+
+            submitBtn.addEventListener('click', () => {
+                const name = document.getElementById('cv-req-name').value.trim() || 'Not provided';
+                const email = document.getElementById('cv-req-email').value.trim() || 'Not provided';
+                const org = document.getElementById('cv-req-org').value.trim() || 'Not provided';
+                const reason = document.getElementById('cv-req-reason').value.trim() || 'Not provided';
+
+                const subject = `CV Access Request from ${name}`;
+                const body =
+`Hi Ratul,
+
+I'd like to request access to your CV.
+
+Name: ${name}
+Email: ${email}
+Company/Organization: ${org}
+Reason: ${reason}
+
+Please reply with the CV if approved.`;
+
+                const mailtoLink = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.location.href = mailtoLink;
+
+                stepForm.classList.add('hidden');
+                stepConfirm.classList.remove('hidden');
+            });
+        })();
     </script>
 </body>
 </html>
